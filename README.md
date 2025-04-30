@@ -2,9 +2,9 @@
 
 This chatbot runs on a MAUI mobile app and uses Azure SQL to store and retrieve vehicle data. It leverages both Retrieval-Augmented Generation (RAG) and Natural Language to SQL (NL2SQL) to enable chatting with both structured and unstructured data. The bot is built using the Microsoft Semantic Kernel Framework and the newly added support for vectors in Azure SQL. A service developed with Azure Service Fabric receives GPS location data and vehicle speed data, and, through an Azure Function, populates the SQL Server database.
 
-📺 This is the video presentation : [AI Agents Hackathon 2025 - Fleety Your AI Agent for Fleet Management](https://youtu.be/h9vcnfmAreo)
+📺 Here is the project demo video: [AI Agents Hackathon 2025 - APP DEMO Fleety Your AI Agent for Fleet Management](https://youtu.be/k9DfmCha_wg)
 
-📺 Here is the product demo video: [AI Agents Hackathon 2025 - APP DEMO Fleety Your AI Agent for Fleet Management](https://youtu.be/k9DfmCha_wg)
+📺 This is the video presentation : [AI Agents Hackathon 2025 - Fleety Your AI Agent for Fleet Management](https://youtu.be/h9vcnfmAreo)
 
 ## Architecture
 
