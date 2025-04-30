@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AITrackerAgent.MainPage"
+             xmlns:sfchat="clr-namespace:Syncfusion.Maui.Chat;assembly=Syncfusion.Maui.Chat"
+             xmlns:badge="clr-namespace:Syncfusion.Maui.Core;assembly=Syncfusion.Maui.Core"             
+             >
+
+    <Grid>
+        <sfchat:SfChat x:Name="sfChat"
+                           Messages="{Binding Messages}"
+                           CurrentUser="{Binding CurrentUser}"
+                           SendMessageCommand="{Binding PromptRequestCommand}"
+                           TypingIndicator="{Binding TypingIndicator}"
+                           ShowTypingIndicator="{Binding ShowTypingIndicator}"
+                           ShowTimeBreak="True" 
+                           StickyTimeBreak="False">
+        </sfchat:SfChat>
+
+        <badge:SfBadgeView x:Name="ScrollDown" VerticalOptions="End" HorizontalOptions="End" IsVisible="{Binding IsBadgeViewVisible}" Margin="0,0,16,84" >
+            <badge:SfBadgeView.BadgeSettings>
+                <badge:BadgeSettings Animation="None" Position="Top" FontSize="10" Offset="-25,20"
+                             FontAttributes="Bold" BadgeAlignment="Start"/>
+            </badge:SfBadgeView.BadgeSettings>
+            <badge:SfBadgeView.Content>
+                <Grid WidthRequest="60" HeightRequest="60">
+                    <Border HeightRequest="40" WidthRequest="40"  Background="{AppThemeBinding Light=#FFFBFE,Dark=#302D38}" Stroke="Transparent" HorizontalOptions="End" VerticalOptions="End">
+                        <Border.Shadow>
+                            <Shadow Offset="0,1" Radius="2"
+                                        Brush="#4d000000"/>
+                        </Border.Shadow>
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="20"/>
+                        </Border.StrokeShape>
+                        <Label Text="&#xe7D1;" TextColor="{AppThemeBinding Light=#49454F,Dark=#CAC4D0}"
+                                   FontSize="20" Margin="0,3,0,0" 
+                                   HorizontalOptions="Center" VerticalOptions="Center" 
+                                   FontFamily="MauiSampleFontIcon"/>
+                    </Border>
+                </Grid>
+            </badge:SfBadgeView.Content>
+        </badge:SfBadgeView>
+    </Grid>
+
+</ContentPage>
