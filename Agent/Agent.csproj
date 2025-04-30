@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net9.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
+		<PackageReference Include="SendGrid" Version="9.29.3" />
+		<PackageReference Include="Syncfusion.Maui.Buttons" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.Calendar" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.Chat" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.Core" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.DataSource" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.GridCommon" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.Inputs" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.ListView" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.Picker" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.Popup" version="29.1.40" />
+		<PackageReference Include="Syncfusion.Maui.TabView" version="29.1.40" />
+
+		<PackageReference Include="Dapper" Version="2.1.66" />
+		<PackageReference Include="dbup-sqlserver" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Data.SqlClient" Version="6.0.2" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Console" Version="9.0.4" />
+		<PackageReference Include="Microsoft.SemanticKernel" Version="1.47.0" />
+		<PackageReference Include="Microsoft.SemanticKernel.Connectors.OpenAI" Version="1.47.0" />
+		<PackageReference Include="Microsoft.SemanticKernel.Connectors.SqlServer" Version="1.47.0-preview" />
+
+		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="9.0.4" />
+		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="9.0.4" />
+	</ItemGroup>
+</Project>
