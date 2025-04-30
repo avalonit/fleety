@@ -66,3 +66,5 @@ Certs/
 
 serviceDependencies.func-9ways-tracker-dev - Zip Deploy.json
 serviceDependencies.func-9ways-tracker-dev - Zip Deploy.json.user
+
+PublishProfiles/
