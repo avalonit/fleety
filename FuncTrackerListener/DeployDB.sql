@@ -25,11 +25,11 @@ CREATE TABLE [dbo].[TrackerEvent] (
     [title] NVARCHAR(255) NULL,
     [latlogo] NVARCHAR(100) NULL,
     [gps_data] NVARCHAR(4000) NULL,    
-    [address] NVARCHAR(255) NULL    
-    [address_street] NVARCHAR(255) NULL    
-    [address_province] NVARCHAR(255) NULL    
-    [address_country] NVARCHAR(255) NULL    
-    [address_postalcode] NVARCHAR(255) NULL    
+    [address] NVARCHAR(255) NULL,    
+    [address_street] NVARCHAR(255) NULL,    
+    [address_province] NVARCHAR(255) NULL,    
+    [address_country] NVARCHAR(255) NULL,    
+    [address_postalcode] NVARCHAR(255) NULL,    
     [address_resolved] BIT NOT NULL DEFAULT 0,     
     [vehicle_id] UNIQUEIDENTIFIER,
 );
@@ -78,7 +78,7 @@ SELECT @driver_id =  driver_id FROM Drivers WHERE driver_name = 'Alberto Valenti
 INSERT INTO Vehicle (vehicle_name, driver_name, vehicle_numberplate, gps_equipmentid, gps_phone, driver_id)
 VALUES ('Peugeot 2008', 'Alberto Valenti', 'GR422VL', '9058723497', '+423663940084040', @driver_id)     
 
-DECLARE @driver_id UNIQUEIDENTIFIER
+--DECLARE @driver_id UNIQUEIDENTIFIER
 SELECT @driver_id =  driver_id FROM Drivers WHERE driver_name = 'John Doe'
 INSERT INTO Vehicle (vehicle_name, driver_name, vehicle_numberplate, gps_equipmentid, gps_phone, driver_id) 
 VALUES ('Kymco Agility 150', 'John Doe', 'FB42668', '9059109989', '+423663940084041', @driver_id)     
