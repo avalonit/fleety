@@ -49,7 +49,7 @@ The Azure Function and the MAUI application share the same configuration file fo
 - `SendGridKey`: sendgrid license key
 - `SendGridSender`: sendgrid authorized sendetr email address
 
-The Service Fabrux configuration file format.
+The Service Fabric configuration file format.
 
 - `APIServiceUrl`: the public URL of the deployed azure function
 
