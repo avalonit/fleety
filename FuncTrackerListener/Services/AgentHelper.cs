@@ -1,9 +1,7 @@
 using AITrackerAgent.Classes;
 using AITrackerAgent.Interfaces;
-using Syncfusion.Maui.Chat;
 using System.Text.Json;
 using trackerlistener.DataAccessLayer;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace trackerlistener.Services;
 
