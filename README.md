@@ -1,4 +1,4 @@
-# Integration of Azure SQL Chat Agent into a MAUI app for a fleet management solution.
+# Integrating an Azure SQL Chat Agent and Semantic Kernel into a MAUI app designed for a fleet management solution
 
 This chatbot runs on a MAUI mobile app and uses Azure SQL to store and retrieve vehicle data. It leverages both Retrieval-Augmented Generation (RAG) and Natural Language to SQL (NL2SQL) to enable chatting with both structured and unstructured data. The bot is built using the Microsoft Semantic Kernel Framework and the newly added support for vectors in Azure SQL. A service developed with Azure Service Fabric receives GPS location data and vehicle speed data, and, through an Azure Function, populates the SQL Server database.
 
