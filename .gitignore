@@ -58,10 +58,6 @@ packages/
 pkg/
 .vscode/
 
-Settings.xml
-local.settings.json
-appsettings.json
-
 Certs/
 
 serviceDependencies.func-9ways-tracker-dev - Zip Deploy.json

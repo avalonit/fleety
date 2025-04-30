@@ -1,0 +1,19 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "AzureOpenAIEndpointEmbedding": "",
+    "AzureOpenAIEndpointChat": "",
+    "AzureOpenAIApiKeyEmbedding": "",
+    "AzureOpenAIApiKeyChat": "",
+    "EmbeddingModelDeploymentName": "",
+    "ChatModelDeploymentName": "",
+    "SqlConnectionString": "",
+    "SqlChatMemoryTableName": "",
+    "AtlasMapKey": "",
+    "SyncfusionLicense": "",
+    "SendGridKey": "",
+    "SendGridSender": ""
+  }
+}
