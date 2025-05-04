@@ -9,8 +9,9 @@ namespace AITrackerAgent.Classes
         public string? address_province { get; set; }
         public string? address_country { get; set; }
         public string? address_postalcode { get; set; }
+        public decimal speeddec { get; set; }
         public DateTime createdat { get; set; }
-        
+
     }
 
 }

@@ -13,9 +13,9 @@ using System.Data;
 namespace AITrackerAgent.Services;
 
 public class AgentSessionPlugin(Kernel kernel, ISemanticTextMemory memory, IAddressService addressService, ICommunicationService communicationService, string connectionString)
-{   
+{
     //private readonly ILogger logger = logger;
-    private readonly Kernel kernel = kernel;    
+    private readonly Kernel kernel = kernel;
     private readonly ISemanticTextMemory memory = memory;
     private readonly string connectionString = connectionString;
     private readonly IAddressService addressService = addressService;
@@ -38,7 +38,7 @@ public class AgentSessionPlugin(Kernel kernel, ISemanticTextMemory memory, IAddr
         [lastupdatedat]: last time position updated
         """)]
     public async Task<IEnumerable<dynamic>> QueryVehiclesTable(string logical_sql_query)
-    {        
+    {
         var ai = kernel.GetRequiredService<IChatCompletionService>();
         var chat = new ChatHistory(@"You create T-SQL queries based on the given user request and the provided schema. Just return T-SQL query to be executed. Do not return other text or explanation. Don't use markdown or any wrappers.
         The database schema is the following:
@@ -75,14 +75,14 @@ public class AgentSessionPlugin(Kernel kernel, ISemanticTextMemory memory, IAddr
 
         var sqlQuery = GenerateSQL(response.Content);
         //Console.WriteLine($"Executing the following query: {sqlQuery}");
-        
+
         await using var connection = new SqlConnection(connectionString);
         var result = await connection.QueryAsync(sqlQuery);
 
         return result;
     }
 
-   
+
     [KernelFunction("query_drivers_table")]
     [Description("""
         Query the database to find drivers data for vehicles
@@ -96,7 +96,7 @@ public class AgentSessionPlugin(Kernel kernel, ISemanticTextMemory memory, IAddr
         [driver_email]: driver email
         """)]
     public async Task<IEnumerable<dynamic>> QueryDriversTable(string logical_sql_query)
-    {        
+    {
         var ai = kernel.GetRequiredService<IChatCompletionService>();
         var chat = new ChatHistory(@"You create T-SQL queries based on the given user request and the provided schema. Just return T-SQL query to be executed. Do not return other text or explanation. Don't use markdown or any wrappers.
         The database schema is the following:
@@ -137,7 +137,7 @@ public class AgentSessionPlugin(Kernel kernel, ISemanticTextMemory memory, IAddr
     public async Task<BingData> ShowMapCoordinatesOnBingMap([Description("Latitude.")] double lat, [Description("Longitude.")] double lng)
     {
         var bingData = new BingData()
-        { 
+        {
             Address = await GetAddressFromCordinates(lat, lng),
             BingUrl = $"https://www.bing.com/maps?cp={lat.ToString(System.Globalization.CultureInfo.InvariantCulture)}%7E{lng.ToString(System.Globalization.CultureInfo.InvariantCulture)}&lvl=16.7"
         };
@@ -158,9 +158,9 @@ public class AgentSessionPlugin(Kernel kernel, ISemanticTextMemory memory, IAddr
 
     [KernelFunction("send_email_driver")]
     [Description("Send an email to the driver.")]
-    public async Task SendEmail([Description("Latitude.")] double lat, 
-        [Description("Longitude.")] double lng, 
-        [Description("Email address of the driver.")] string emailTo, 
+    public async Task SendEmail([Description("Latitude.")] double lat,
+        [Description("Longitude.")] double lng,
+        [Description("Email address of the driver.")] string emailTo,
         [Description("Full name of the driver.")] string driverName)
     {
         var subject = "Vehicle position";
@@ -175,22 +175,41 @@ public class AgentSessionPlugin(Kernel kernel, ISemanticTextMemory memory, IAddr
 
     [KernelFunction("find_history_locations_by_date")]
     [Description("Return location history for a vehicle based on the vehicle id on a specified date. If date is not provided, return all locations.")]
-    public async Task<IEnumerable<LocationHistory>> GetCustomerInteractions(Guid vehicle_id, DateTime? date)
-    {        
+    public async Task<IEnumerable<LocationHistory>> GetVehicleInteractions(Guid vehicle_id, DateTime? date)
+    {
         DefaultTypeMap.MatchNamesWithUnderscores = true;
 
         await using var connection = new SqlConnection(connectionString);
-        var isDateValid = date!=null && date.Value.Year >= DateTime.Now.Year-1;
-        var locations = await connection.QueryAsync<LocationHistory>("dbo.find_position_history_by_date", 
-            new { 
+        var isDateValid = date != null && date.Value.Year >= DateTime.Now.Year - 1;
+        var locations = await connection.QueryAsync<LocationHistory>("dbo.find_position_history_by_date",
+            new
+            {
                 vehicle_id,
                 date = isDateValid ? date : DateTime.Now
-            }, 
+            },
             commandType: CommandType.StoredProcedure
         );
-        return locations;    
+        return locations;
     }
 
+    [KernelFunction("find_history_speed_by_date")]
+    [Description("Return speed for a vehicle based on the vehicle id on a specified date. If date is not provided, return all speeds.")]
+    public async Task<IEnumerable<LocationHistory>> GetVehicleSpeeds(Guid vehicle_id, DateTime? date)
+    {
+        DefaultTypeMap.MatchNamesWithUnderscores = true;
+
+        await using var connection = new SqlConnection(connectionString);
+        var isDateValid = date != null && date.Value.Year >= DateTime.Now.Year - 1;
+        var locations = await connection.QueryAsync<LocationHistory>("dbo.find_position_history_by_date",
+            new
+            {
+                vehicle_id,
+                date = isDateValid ? date : DateTime.Now
+            },
+            commandType: CommandType.StoredProcedure
+        );
+        return locations;
+    }
 
     [KernelFunction("query_maintenance_table")]
     [Description("""

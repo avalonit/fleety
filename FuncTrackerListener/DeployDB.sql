@@ -94,6 +94,7 @@ AS
 BEGIN
 SELECT 
       [vehicle_id]
+      ,[speeddec] 
       ,[address]
       ,[address_street]
       ,[address_province]
